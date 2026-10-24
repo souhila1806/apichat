@@ -11,6 +11,5 @@ import java.util.Date;
 @Builder
 public class Contract {
     private Date creationDate;
-    private Boolean isActive;
     private String fullName;
 }

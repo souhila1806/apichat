@@ -2,8 +2,16 @@ spring:
   application:
     name: apichat
   ai:
-    ollama:
-      base-url: http://localhost:11434
+    openai:
+      api-key: ${GROQ_API_KEY}
+      base-url: https://api.groq.com/openai/v1
       chat:
-        options:
-          model: llama3.2
+        temperature: 0.2
+        model: openai/gpt-oss-120b
+        replay-reasoning-content: false
+
+#    ollama:
+#      base-url: http://localhost:11434
+#      chat:
+#        options:
+#          model: llama3.2

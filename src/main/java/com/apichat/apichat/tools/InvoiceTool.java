@@ -11,13 +11,13 @@ import java.util.Date;
 @Component
 public class InvoiceTool {
 
-    @Tool(description = "returns unpaid invoices of a given msisdn. If msisdn is not provided dont hallucinate")
-    public Invoice getInvoice(@ToolParam(required = true,description = "The msisdn is madatory and should be in 2135xxxxxxxx format.") String msisdn){
-        if (msisdn == null || msisdn.isBlank()) {
-            throw new IllegalArgumentException("No msisdn was provided. You must ask the user for their msisdn before calling this tool again. Do not invent or guess a value.");
+    @Tool(description = "returns unpaid invoices of a given clientId. If clientId is not provided dont hallucinate")
+    public Invoice getInvoice(@ToolParam(required = true,description = "The clientId is madatory and should be in IDX_xxxxxxxx format.") String clientId){
+        if (clientId == null || clientId.isBlank()) {
+            throw new IllegalArgumentException("No clientId was provided. You must ask the user for their clientId before calling this tool again. Do not invent or guess a value.");
         }
-        if (!msisdn.matches("2135\\d{8}")) {
-            throw new IllegalArgumentException("Invalid msisdn format. Expected format: 2135xxxxxxxx (12 digits starting with 2135).");
+        if (!clientId.matches("IDX_\\d{8}")) {
+            throw new IllegalArgumentException("Invalid clientId format. Expected format: IDX_xxxxxxxx");
         }
         return Invoice.builder().dueOnDate(new Date()).amount(2000.0).build();
     }
